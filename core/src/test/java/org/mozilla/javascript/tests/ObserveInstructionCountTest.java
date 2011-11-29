@@ -74,9 +74,9 @@ public class ObserveInstructionCountTest extends TestCase {
     private void baseCase(int optimizationLevel, String source) {
         ContextFactory factory = new MyFactory();
         Context cx = factory.enterContext();
+        cx.setOptimizationLevel(optimizationLevel);
+        assertTrue(cx instanceof MyContext);
         try {
-            cx.setOptimizationLevel(optimizationLevel);
-            assertTrue(cx instanceof MyContext);
             Scriptable globalScope = cx.initStandardObjects();
             cx.evaluateString(globalScope,
                     source,
